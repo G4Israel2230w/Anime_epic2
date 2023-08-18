@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+{% if imagen_1 %}
+{% for a in imagen_1 %}
+    <section class="normal-breadcrumb set-bg" data-setbg="{{ a.imagen_2.url }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="normal__breadcrumb__text">
+                        <h2>{{ a.titulo }}</h2>
+                        <p>{{ a.descripcion }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endfor %}
+{% endif %}
+
+    <!-- Normal Breadcrumb End -->
+
+    <!-- Signup Section Begin -->
+    <section class="signup spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login__form">
+                        <h3>Registrarse</h3>
+                        <form method="POST">
+                            {% csrf_token %}
+                        
+                            <div class="input__item">
+                                <p style="color: blue;">
+                                    <input type="email" name="{{ form.email.html_name }}" class="email-field" style="color: green;" placeholder="Email">
+                                </p>
+                                <span class="icon_mail" style="vertical-align: middle;"></span>
+                            </div>
+                            <div class="input__item">
+                                <p style="color: blue;">
+                                    <input type="text" name="{{ form.username.html_name }}" style="color: blue;" placeholder="Usuario">
+                                </p>
+                                <span class="icon_profile"></span>
+                            </div>
+                            <div class="input__item">
+                                <p style="color: blue;">
+                                    <input type="password" name="{{ form.password1.html_name }}" style="color: red;" placeholder="Contraseña">
+                                </p>
+                                <span class="icon_lock"></span>
+                            </div>
+                            <div class="input__item">
+                                <p style="color: blue;">
+                                    <input type="password" name="{{ form.password2.html_name }}" style="color: orange;" placeholder="Confirmar contraseña">
+                                </p>
+                                <span class="icon_lock"></span>
+                            </div>
+                            
+                            <button type="submit" class="site-btn">INICIA SESIÓN AHORA</button>
+                        </form>
+                        <h5>¿Ya tienes una cuenta?  <a href="login.html"> ¡iniciar sesion!</a></h5>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login__social__links">
+                        <h3>Login With:</h3>
+                        <ul>
+                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i> INICIAR SESIÓN USANDO FACEBOOK</a>
+                            </li>
+                            <li><a href="#" class="google"><i class="fa fa-google"></i> INICIA SESIÓN CON GOOGLE</a></li>
+                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i> REGISTRATE CON TWITTER</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock  %}
+</body>
+
+</html>

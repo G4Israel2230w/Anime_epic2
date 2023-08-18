@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock  %}
+{% load static %}
+
+{% block contenido %}
+
+<body>
+    
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+   
+
+  
+
+    <!-- Product Section Begin -->
+    <div class="col-lg-2">
+        <div class="header__right">
+            <a href="#" class="search-switch"><span class="icon_search"></span></a>
+            <a href="./login.html"><span class="icon_profile"></span></a>
+        </div>
+    </div>
+</div>
+<div id="mobile-menu-wrap"></div>
+</div>
+</header>
+
+<section class="hero">
+
+    <div class="container">
+        <div class="hero__slider owl-carousel">
+            {% for a in hero_items %}
+            <div class="hero__items set-bg" data-setbg="{{a.image.url }}">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hero__text">
+                            <div class="label">{{a.label}}</div>
+                            <h2>{{a.title}}</h2>
+                            <p>{{a.description}}</p>
+                            <a href="#"><span>ver ahora11</span> <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+  
+<!-- Product Section End -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="trending__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Trending Now</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for e in trending_products %} 
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ e.image1.url }}">
+                                        <div class="ep">{{ e.episode }}</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> {{ e.comments }}</div>
+                                        <div class="view"><i class="fa fa-eye"></i> {{ e.views }}</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{ e.status }}</li>
+                                            <li>{{ e.category }}</li>
+                                        </ul>
+                                        <h5><a href="#">{{ e.name }}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        
+        
+    
+                
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="product__sidebar">
+                        <div class="product__sidebar__view">
+                            <div class="section-title">
+                                <h5>Top Views</h5>
+                            
+                            </div>
+                            <ul class="filter__controls">
+                            {% for i in top_views %}
+                                {% if i.filter_day %}Day{% endif %}
+                                {% if i.filter_week %}Week{% endif %}
+                                {% if i.filter_month %}Month{% endif %}
+                                {% if i.filter_year %}Year{% endif %}
+                            {% endfor %}   
+                            </ul>
+                            <div class="filter__gallery">
+                                {% for i in top_views %}
+                                <div class="product__sidebar__view__item set-bg mix day years"
+                                data-setbg="{{ i.image.url }}">
+                                <div class="ep">{{i.episode}}</div>
+                                <div class="view"><i class="fa fa-eye"></i> {{i.views}}</div>
+                                <h5><a href="#">{{i.name}}</a></h5>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                
+            
+                           
+        
+    </div>
+ <section>
+
+
+    <div class="product__sidebar__comment">
+        <div class="section-title">
+            <h5>New Comment</h5>
+    {% for o in new_comments %}
+        </div>
+        </div>
+        <div class="product__sidebar__comment__item">
+            <div class="product__sidebar__comment__item__pic">
+                <img src="{{ o.image.url }}" alt="">
+            </div>
+            <div class="product__sidebar__comment__item__text">
+                <ul>
+                    <li>{{o.status}}</li>
+                    <li>{{o.category}}</li>
+                </ul>
+                <h5><a href="#">{{o.name}}</a></h5>
+                <span><i class="fa fa-eye"></i> {{o.views}}</span>
+            </div>
+            {% endfor %}   
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Section End -->
+
+  <!-- Footer Section End -->
+
+  <!-- Search model Begin -->
+  
+</div>
+
+{% endblock  %}
+
+</body>
+
+</html>
