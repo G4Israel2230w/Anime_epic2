@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+)chgs=^pdr#c*@2#l)%)$a76lm=zfb7u5id$0l3d_w1z_!j@6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'myproyecto.urls'
@@ -81,13 +82,21 @@ WSGI_APPLICATION = 'myproyecto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+ #   'default': {
+ #       'ENGINE': 'django.db.backends.sqlite3',
+  #      'NAME': BASE_DIR / 'db.sqlite3',
+   # }
+#}
 
+import dj_database_url
+from decouple import config
+
+DATABASE={
+    'default':dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -137,3 +146,5 @@ STATICFILES_DIRS = [
 MEDIA_URL= '/Media/'
 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'Media')
+
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'

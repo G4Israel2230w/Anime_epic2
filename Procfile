@@ -1,0 +1,1 @@
+Web: gunicorn Anime_epic2.wsgi --log-file -
